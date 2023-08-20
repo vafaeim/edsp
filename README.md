@@ -6,13 +6,13 @@ The `edsp` library is a versatile Java package designed to streamline file-relat
 
 - [Introduction](#introduction)
 - [Installation](#installation)
-- - [Prerequisites](#prerequisites)
-- - [Installation Steps](#installation-steps)
+  - [Prerequisites](#prerequisites)
+  - [Installation Steps](#installation-steps)
 - [Usage](#usage)
-- - [Data Management](#data-management)
-- - [Searching and Linking](#searching-and-linking)
-- - [File Information](#file-information)
-- - [Sorting](#sorting)
+  - [Data Management](#data-management)
+  - [Searching and Linking](#searching-and-linking)
+  - [File Information](#file-information)
+  - [Sorting](#sorting)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -28,9 +28,19 @@ To use the `edsp` library, you need to have Java JDK installed on your system.
 
 ### Installation Steps
 
-1. Download the `edsp` library ZIP package from the [GitHub repository](https://github.com/vafaeim/edsp).
-2. Extract the ZIP package to a suitable location.
-3. Include the library in your Java project's classpath.
+1. Clone the `edsp` repository using the following command:
+   ```
+   git clone https://github.com/vafaeim/edsp.git
+   ```
+2. Navigate to the `edsp` directory:
+   ```
+   cd edsp
+   ```
+3. Compile the Java files:
+   ```
+   javac edsp/*.java
+   ```
+4. Include the compiled `.class` files in your Java project's classpath.
 
 ## Usage
 
