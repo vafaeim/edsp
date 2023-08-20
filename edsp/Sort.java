@@ -1,7 +1,5 @@
 package edsp;
-/**
- * 
- */
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,11 +9,6 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
-/**
- * 
- * @author astro.avm
- *
- */
 class Sort {
 	
 	private File file;
@@ -24,25 +17,11 @@ class Sort {
 	
 	String address;
 	
-	/**
-	 * 
-	 * @param address
-	 * @throws IOException
-	 */
-	public Sort(String address) throws IOException
-	{
-		
+	public Sort(String address) throws IOException {
 		this.address = address;
-		
 	}
 	
-	/**
-	 * 
-	 * @return
-	 * @throws IOException
-	 */
 	public boolean sort() throws IOException {
-		
 		file = new File(address);
 		read = new BufferedReader(new FileReader(file));
 		
@@ -50,7 +29,9 @@ class Sort {
 		String line = "Empty";
 		while (line != null) {
 			line = read.readLine();
-			if(line != null) {list.add(line);}
+			if (line != null) {
+				list.add(line);
+			}
 		}
 		
 		list.sort(null);
@@ -61,12 +42,11 @@ class Sort {
 		file.createNewFile();
 		write = new PrintWriter(new BufferedWriter(new FileWriter(file, true)), true);
 		
-		while(true)
-		{
+		while (true) {
 			try {
-			write.printf("%s", list.get(0)+"\n");
-			list.remove(0);
-			}catch(Exception e){
+				write.printf("%s", list.get(0) + "\n");
+				list.remove(0);
+			} catch (Exception e) {
 				break;
 			}
 		}
@@ -75,8 +55,5 @@ class Sort {
 		list.clear();
 		
 		return OK;
-		
 	}
-		
-	
 }

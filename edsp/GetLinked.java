@@ -1,117 +1,95 @@
 package edsp;
-/**
- * 
- */
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- * 
- * @author astro.avm
- *
- */
 class GetLinked {
 	
 	private BufferedReader read;
 	private File file;
 	
-	/**
-	 * 
-	 * @param address
-	 * @param str
-	 * @param autoCheck
-	 * @param fileFormat
-	 * @param middle
-	 * @return
-	 * @throws IOException
-	 */
-	public String getLinked(String address, String str, boolean autoCheck, String fileFormat, String middle) throws IOException
-	{
-		
+	public String getLinked(String address, String str, boolean autoCheck, String fileFormat, String middle) throws IOException {
 		final int addresssize = address.length();
 		
-		if(!address.toLowerCase().substring((addresssize-(fileFormat.length()+1)), addresssize).equals("."+fileFormat))
-		{
-			if(!address.toLowerCase().substring((addresssize-1), addresssize).equals("\\")) {address = address+"\\";}
-			String firstWord = "Empty";
-			for(int i = 0; i < str.length(); i++){if(!str.substring(i, i+1).equals(" ")){firstWord = str.substring(i, i+1); break;}}
-			String filename = (firstWord+"."+fileFormat).toLowerCase(); address = address+filename;
+		if (!address.toLowerCase().substring((addresssize - (fileFormat.length() + 1)), addresssize).equals("." + fileFormat)) {
+			if (!address.toLowerCase().substring((addresssize - 1), addresssize).equals("\\")) {
+				address = address + "\\";
+				String firstWord = "Empty";
+				for (int i = 0; i < str.length(); i++) {
+					if (!str.substring(i, i + 1).equals(" ")) {
+						firstWord = str.substring(i, i + 1);
+						break;
+					}
+				}
+				String filename = (firstWord + "." + fileFormat).toLowerCase();
+				address = address + filename;
+			}
 		}
 		
 		file = new File(address);
-		if(file.exists() == false) {return "false";}
+		if (file.exists() == false) {
+			return "false";
+		}
 		read = new BufferedReader(new FileReader(file));
 		
 		int n = 0;
 		String line = read.readLine();
 		while (line != null) {
 			line = read.readLine();
-			n+=1;
+			n += 1;
 		}
 		
 		read.close();
 		read = new BufferedReader(new FileReader(file));
 		ArrayList<String> list = new ArrayList<String>();
 		int i;
-		for(i = 0; i <= n-1; i++)
-		{
+		for (i = 0; i <= n - 1; i++) {
 			list.add(i, read.readLine());
 		}
 		read.close();
 		
-		
 		String secondWord = "";
-		for(i = 1; i <= str.length(); i++){if(str.length()!=1) {if(!str.substring(i, i+1).equals(" ")){secondWord = str.substring(i, i+1); break;}}}
+		for (i = 1; i <= str.length(); i++) {
+			if (str.length() != 1) {
+				if (!str.substring(i, i + 1).equals(" ")) {
+					secondWord = str.substring(i, i + 1);
+					break;
+				}
+			}
+		}
 		String F = "abcdefghijklm";
 		String E = "nopqrstuvwxyz";
 		String word;
-		for(i = 0; i <= F.length()-1; i++) {
-			word = F.substring(i, i+1);
-			if(secondWord.toLowerCase().equals(word) || autoCheck == false || secondWord == "")
-			{
-				while(true) {
-					try{
-						if((str+middle).toLowerCase().equals(list.get(0).substring(0, str.length()+middle.length()).toLowerCase()))
-						{
-							return list.get(0).substring(str.length()+middle.length(), list.get(0).length());
+		for (i = 0; i <= F.length() - 1; i++) {
+			word = F.substring(i, i + 1);
+			if (secondWord.toLowerCase().equals(word) || autoCheck == false || secondWord.equals("")) {
+				while (true) {
+					try {
+						if ((str + middle).toLowerCase().equals(list.get(0).substring(0, str.length() + middle.length()).toLowerCase())) {
+							return list.get(0).substring(str.length() + middle.length(), list.get(0).length());
 						}
 						list.remove(0);
-					}catch(Exception e){
-					list.clear();
-					break;
+					} catch (Exception e) {
+						list.clear();
+						break;
 					}
 				}
-				
-				
 			}
-			word = E.substring(i, i+1);
-			if(secondWord.toLowerCase().equals(word) && autoCheck == true)
-			{
-				
-				for(i = n-1; i >= 0; i--)
-				{
-					if((str+middle).toLowerCase().equals(list.get(i).substring(0, str.length()+middle.length()).toLowerCase()))
-					{
-						return list.get(i).substring(str.length()+middle.length(), list.get(i).length());
+			word = E.substring(i, i + 1);
+			if (secondWord.toLowerCase().equals(word) && autoCheck == true) {
+				for (i = n - 1; i >= 0; i--) {
+					if ((str + middle).toLowerCase().equals(list.get(i).substring(0, str.length() + middle.length()).toLowerCase())) {
+						return list.get(i).substring(str.length() + middle.length(), list.get(i).length());
 					}
-					
-					
 				}
 				list.clear();
 				break;
-				
-				
 			}
-			
 			read.close();
-			
-			
 		}
 		return "false";
-		
 	}
-	
 }
