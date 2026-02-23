@@ -1,6 +1,9 @@
-# edsp Library
+# EDSP Library
 
-The `edsp` library is a versatile Java package designed to streamline file-related operations and data manipulation tasks. It provides a collection of classes that work seamlessly together to handle sending, searching, linking, and sorting data within text files. This library aims to simplify common file operations, making your code more efficient and readable.
+# [LEGACY - Written at age 14] 😂
+> **Note:** I originally wrote this package back in 2017. The original repo was lost, so I just re-uploaded these old files in 2022 for the memories. Please don't judge my current code by this! 😅
+
+The `EDSP` library is a versatile Java package designed to streamline file-related operations and data manipulation tasks. It provides a collection of classes that work seamlessly together to handle sending, searching, linking, and sorting data within text files. This library aims to simplify common file operations, making your code more efficient and readable.
 
 ## Table of Contents
 
